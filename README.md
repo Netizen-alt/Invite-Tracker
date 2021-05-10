@@ -6,4 +6,6 @@
  
  ✈️ NPM INSTALL
  
+ 🍇 SETTING TOKEN IN CONFIG FOLDER BOT.JS https://discord.com/developers/applications
+ 
  🌈RUN NODE INDEX.JS
