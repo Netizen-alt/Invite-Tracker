@@ -1,0 +1,15 @@
+{
+  "name": "invite-link-tracker",
+  "version": "2.0.1",
+  "description": "A project bot in the discord.js series.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "LYNN_#6590",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^12.5.3",
+    "moment": "^2.29.1"
+  }
+}
