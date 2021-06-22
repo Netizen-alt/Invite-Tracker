@@ -1,12 +1,11 @@
-const {Client, MessageEmbed} = require("discord.js")
-const moment = require("moment");
-const client = new Client({
+const { Client, MessageEmbed } = require("discord.js"); // NPM INSTALL DISCORD.JS V.12
+const moment = require('moment'); // NPM INSTALL MOMENT
+const client = new Client({ // read docs https://discord.js.org/#/docs/main/stable/class/Presence
     presence: {
-        status: "dnd", //dnd //online //idle
+        status: "online", 
         activity: {
-            name: "Calculating...", //Project: Audit_Logs Language: JavaScript Premisstion: Administrator , Moderator
-            type: "WATCHING", // PLAYING, WATCHING, LISTENING, STREAMING,
-            //url: "https://twitch.tv/#"
+            name: "code desing by: Looney#0001 | 👻 ",
+            type: "LISTENING"
         }
 
     }
@@ -17,15 +16,16 @@ client.config = require('./config/bot');
 const guildInvites = new Map;
 
 client.on("inviteCreate",async invite => guildInvites.set(invite.guild.id, await invite.guild.fetchInvites()));
+
 client.on("ready",() =>{
     console.log(`${client.user.tag} is online!`)
     client.guilds.cache.forEach(guild => {
         guild.fetchInvites()
         .then(invites => guildInvites.set(guild.id, invites))
-        .cache(err => console.log(err));
-
+        .catch(err => console.log(err));
     });
 });
+
 
 client.on("guildMemberAdd", async member => {
     const cachedInvites = guildInvites.get(member.guild.id);
@@ -41,27 +41,31 @@ client.on("guildMemberAdd", async member => {
 
         const embed = new MessageEmbed()
 
-        .setColor(0xffe4e1)
+        .setColor('#ffe4e1')
         .setTitle(`﹕✦・Invitecount `)
         .setDescription(`・・・・・・・・・・・・・・・・・
         ${member}  **joined**〃
         〃**Invited by** ${usedInvite.inviter}・${usedInvite.code}
         ᵎ﹕**Total** ${usedInvite.uses} **Invites**〃
-        〃**Accountage** undefined ・
+        〃**Accountage** ${moment(member.user.createdAt).fromNow()} ・
         ・・・・・・・・・・・・・・・・・`)
-        //.setDescription(`Hello ${member}, you disk smaill ${member.guild.memberCount}\nJoined useing ${usedInvite.inviter.username}'s\nMember of uses: ${usedInvite.uses}\ninviteLink: ${usedInvite.url}`)
-        //.setDescription(`${moment(member.user.createdTimestamp).format('LT')}`)
-        //.addField('Time Created', `${moment(member.user.createdAt).fromNow()}`, true)
-       //${moment(member.user.createdAt).format('LT')} ${moment(member.user.createdAt).format('LL')} 
         .setTimestamp()
 
-        const joinChannel = member.guild.channels.cache.find(channel => channel.id === "837229172606500925")
-        
-        if(joinChannel) {
-            joinChannel.send(embed).cache(err, console.log(err))
+        const ChannelJoin = member.guild.channels.cache.find(channel => channel.id === ""); //ใส่ไอดีห้องที่ต้องการ
+        //const ChannelJoin = member.guild.channels.cache.find(channel => channel.name === ""); //ใส่ชื่อห้องที่ต้องการ
+        if(ChannelJoin) {
+            ChannelJoin.send(embed).catch(err => console.log(err));
         }
     }
     catch(err) {console.log(err);}
-})
+});
 
 client.login(client.config.discord.token);
+
+/**
+ * @INFO
+ * ระบบแจ้งเตือน หรือ เช็คจำนวนการเชิญ ในแบบสมาชิกเข้า
+ * Github: https://github.com/JKTheRipperTH
+ * Discord: Sansamit_#1449 & Looney#0001
+ * อธิบายไม่ค่อยเยอะเท่าไรนะไปศึกษาดูเอาเด้อ
+ */
