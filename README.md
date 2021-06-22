@@ -1,11 +1,8 @@
-# Invite-Tracker
+**⚙️ขั้นตอนการติดตั้งและรันบอท
 
- 🚀 INSTALL PACKAGE PROJCET INVITE
- 
- 🎨 OPEN COMMAND PROMPT
- 
- ✈️ NPM INSTALL
- 
- 🍇 SETTING TOKEN IN CONFIG FOLDER BOT.JS https://discord.com/developers/applications
- 
- 🌈RUN NODE INDEX.JS
+**💿 ติดตั้งโมดูล `npm install npm i` หรือ `npm i discord.js` และ `npm i moment`
+
+**💡 หลังจากติดตั้งโมดูลเสร็จแล้ว ไปที่ `config/bot.js` แล้วใส่โทเคนบอท
+
+**🚽 เปิด ``Terminal`` หรือ ``Command prompt`` รัน `node .` และ `node index.js` หรือ `node start`
+
