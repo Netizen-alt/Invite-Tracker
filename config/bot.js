@@ -1,8 +1,5 @@
 module.exports = {
-
-
     discord: {
-        token: 'TOKEN YOUR PASS!!'
+        token: 'Token.1234.ABCD' //ใส่โทเคนของบอท https://discord.com/developers/applications
     },
-
 };
